@@ -20,6 +20,7 @@ function App() {
         {id: v1(), name: 'that task is done', isDone:true}
     ])
     const [filter, setFilter] = useState<FilterType>('All')
+
     // removeTask
     const removeTask = (taskId: string) => {
         setListOfTasks(listOfTasks.filter(el=>el.id !== taskId))
@@ -30,7 +31,8 @@ function App() {
     if (filter==='To-do') { filteredListOfTasks = listOfTasks.filter(el=>!el.isDone)}
     const filterTask = (s: FilterType) => setFilter(s)
     //addTask
-    const addTask = (newTask: TaskType) => {
+    const addTask = (n: string) => {
+        let newTask = {id: v1(), name: n, isDone:false}
         setListOfTasks([...listOfTasks, newTask])
     }
   return (

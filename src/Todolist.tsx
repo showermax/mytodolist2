@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {FilterType, TaskType} from "./App";
 type PropsType = {
     title: string
@@ -8,12 +8,17 @@ type PropsType = {
     add : Function
 }
 export function Todolist (props: PropsType) {
-    // const onClickHandler = (taskId: string) =>{
-    //     props.remove(taskId)
-    // }
+
+    const taskInputref = useRef<HTMLInputElement>(null)
+
+    const onAddButtonHandler = () =>{
+        props.add(taskInputref.current!.value)
+    }
     return (
         <div>
             <h2>{props.title}</h2>
+            <input ref={taskInputref}/>
+            <button onClick={onAddButtonHandler}> Add new </button>
             <ol>
                 {props.tasks.map((el,i) =>
                     <li key={i}>
@@ -27,3 +32,4 @@ export function Todolist (props: PropsType) {
         </div>
     )
 }
+console.log('hi')
