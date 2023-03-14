@@ -16,6 +16,7 @@ function App() {
         {id: v1(), name: 'that\'s your first task', isDone:false},
         {id: v1(), name: 'that\'s your second task', isDone:false},
         {id: v1(), name: 'that\'s your third task', isDone:false},
+        {id: v1(), name: 'that task is done', isDone:true},
         {id: v1(), name: 'that task is done', isDone:true}
     ])
     const [filter, setFilter] = useState<FilterType>('All')
@@ -47,7 +48,6 @@ function App() {
             <div className="card">
                 <Todolist title={'Done'} tasks={filteredListOfTasks} remove={removeTask} filter={filterTask} add={addTask}/>
             </div>
-
     </div>
     </div>
   );
